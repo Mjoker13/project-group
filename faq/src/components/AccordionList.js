@@ -1,12 +1,12 @@
 import Accordion from "./Accordion";
 
-const AccordionList = ({ data, onClick }) => {
+const AccordionList = ({ data}) => {
   return (
-    <div>
+    <div className=" row  ">
       {data.map((el) => {
         return (
-          <div key={el.id}>
-            <Accordion item={el} click={onClick} />
+          <div key={el.id} className=" col-12 col-md-6 col-lg-4 mt-5">
+            <Accordion item={el}  />
           </div>
         );
       })}

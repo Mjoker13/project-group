@@ -1,29 +1,29 @@
 import { useState } from "react";
 
-const Accordion = ({ item, click }) => {
+
+const Accordion = ({ item}) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const toggleExpand = () => {
+   
     setIsExpanded(!isExpanded);
   };
 
   return (
     <div className="accordion">
-      <div className="accordion-item">
+      <div className="accordion">
         <h2 className="accordion-header">
           <button
-            className="accordion-button"
+            className="btn  btn-primary"
             type="button"
-            data-bs-toggle="collapse"
-            aria-expanded="true"
-            aria-controls="collapseOne"
             onClick={toggleExpand}
           >
+            {isExpanded ? <span>&#8593;</span> : <span>&#8595;</span>}
+            {isExpanded ? " Hide" : " Show"}
             {item.title}
           </button>
         </h2>
         <div
-          id="collapseOne"
           className={`collapse ${isExpanded ? "show" : "none"}`}
           aria-labelledby="headingOne"
           data-bs-parent="#accordionExample"
