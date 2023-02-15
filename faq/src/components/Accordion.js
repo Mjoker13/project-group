@@ -1,5 +1,12 @@
+import { useState } from "react";
+
 const Accordion = ({ item, click }) => {
-  console.log("marco" + { click });
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const toggleExpand = () => {
+    setIsExpanded(!isExpanded);
+  };
+
   return (
     <div className="accordion">
       <div className="accordion-item">
@@ -10,15 +17,14 @@ const Accordion = ({ item, click }) => {
             data-bs-toggle="collapse"
             aria-expanded="true"
             aria-controls="collapseOne"
-            onClick={click}
+            onClick={toggleExpand}
           >
             {item.title}
           </button>
         </h2>
         <div
           id="collapseOne"
-          className="accordion-collapse "
-          collapse={click}
+          className={`collapse ${isExpanded ? "show" : "none"}`}
           aria-labelledby="headingOne"
           data-bs-parent="#accordionExample"
         >
