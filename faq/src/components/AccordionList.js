@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import Accordion from "./Accordion";
 
@@ -16,13 +15,13 @@ const AccordionList = ({ data }) => {
     <div className=" row  ">
       {data.map((item) => (
         <div key={item.id} className=" col-12 col-md-6 col-lg-4 mt-5">
-        <Accordion
-          key={item.id}
-          item={item}
-          accordionState={accordionState}
-          setAccordionState={setAccordionState}
-          onClick={() => handleAccordionClick(item.id)}
-        />
+          <Accordion
+            key={item.id}
+            item={item}
+            accordionState={accordionState}
+            setAccordionState={setAccordionState}
+            onClick={() => handleAccordionClick(item.id)}
+          />
         </div>
       ))}
     </div>
