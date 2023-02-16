@@ -17,7 +17,7 @@ const App = () => {
 
   return (
     <div className="container text-center">
-      <h1>Accordion in React usando Bootstrap</h1>
+      <h1 className="my-5">Accordion in React usando Bootstrap</h1>
       <SearchBar />
       <AccordionList data={data} />
     </div>
