@@ -3,7 +3,7 @@ import { useState } from "react";
 import Accordion from "./Accordion";
 
 const AccordionList = ({ data }) => {
-  const [accordionState, setAccordionState] = useState({});
+  const [accordionState, setAccordionState] = useState(0);
 
   const handleAccordionClick = (itemId) => {
     setAccordionState((prevState) => ({
