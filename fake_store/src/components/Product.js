@@ -14,7 +14,7 @@ const Product = ({ product, incrementCart }) => {
         <div className="row  d-flex">
           <div className=" col-6"> {product.price} &euro;</div>
           <div className=" col-6 text-end">
-            {["bottom"].map((placement) => (
+            {["top"].map((placement) => (
               <OverlayTrigger
                 key={placement}
                 placement={placement}
