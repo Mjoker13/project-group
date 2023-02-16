@@ -26,7 +26,7 @@ const Accordion = ({ item, accordionState, setAccordionState, onClick }) => {
           </button>
         </h2>
         <div
-          className={`collapse ${isExpanded ? "show my=0" : "none"}`}
+          className={`collapse ${isExpanded ? "show" : "none"}`}
         >
           <div className="accordion-body">{item.text}</div>
         </div>
