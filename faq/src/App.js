@@ -1,37 +1,33 @@
 import { jsonText } from "./components/filecsv";
 import { useState, useEffect } from "react";
 import AccordionList from "./components/AccordionList";
+import SearchBar from "./components/SearchBar";
 
 const App = () => {
-  const [data, setData] = useState([]);
-  const [show, setShow] = useState("");
+  const [data, setData] = useState(jsonText);
 
-  const handleClose = () => setShow("none");
-  const handleShow = () => setShow("show");
+  const updateData = (str)=>{
+    const dataUpdated = jsonText.filter((el)=>{
+      return el.title.toLowerCase().includes(str.toLowerCase()) || el.text.toLowerCase().includes(str.toLowerCase());
+    })
+    setData(dataUpdated);
+  }
 
-  const updateData = (temp) => {
-    let array = [...temp];
-    setData(array);
-  };
+  // const updateData = (temp) => {
+  //   let array = [...temp];
+  //   setData(array);
+  // };
 
-  const handleClick = () => {
-    if (show === "" || show === "none") {
-      handleShow();
-    } else {
-      handleClose();
-    }
-  };
-
-  useEffect(() => {
-    updateData(jsonText);
-  }, []);
+  // useEffect(() => {
+  //   updateData(jsonText);
+  // }, []);
 
   return (
-    <div className="container">
-      <h1>Accordion in React usando Bootstrap</h1>
-      <AccordionList data={data} onClick={handleClick} />
+    <div className="container text-center">
+      <h1 className="my-5">Accordion in React usando Bootstrap</h1>
+      <SearchBar />
+      <AccordionList data={data} />
     </div>
   );
 };
-
 export default App;

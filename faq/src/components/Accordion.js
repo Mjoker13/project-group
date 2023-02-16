@@ -1,37 +1,37 @@
-import { useState } from "react";
-
-const Accordion = ({ item, click }) => {
-  const [isExpanded, setIsExpanded] = useState(false);
+const Accordion = ({ item, accordionState, setAccordionState, onClick }) => {
+  const isExpanded = accordionState ? accordionState[item.id] : false;
 
   const toggleExpand = () => {
-    setIsExpanded(!isExpanded);
+    const newAccordionState = { ...accordionState };
+
+    Object.keys(newAccordionState).forEach((id) => {
+      if (id !== item.id) {
+        newAccordionState[id] = false;
+      }
+    });
+
+    newAccordionState[item.id] = !isExpanded;
+
+    setAccordionState(newAccordionState);
   };
+
+  const buttonClassNames = "border border-light accordion-button" + (isExpanded ? "" : " collapsed ");
+
 
   return (
     <div className="accordion">
-      <div className="accordion-item">
         <h2 className="accordion-header">
-          <button
-            className="accordion-button"
-            type="button"
-            data-bs-toggle="collapse"
-            aria-expanded="true"
-            aria-controls="collapseOne"
-            onClick={toggleExpand}
-          >
-            {item.title}
+          <button className={buttonClassNames} type="button" onClick={toggleExpand}>
+          {item.title}
           </button>
         </h2>
         <div
-          id="collapseOne"
           className={`collapse ${isExpanded ? "show" : "none"}`}
-          aria-labelledby="headingOne"
-          data-bs-parent="#accordionExample"
         >
-          <div className="accordion-body">{item.text}</div>
+          <div className="border border-info accordion-body">{item.text}</div>
         </div>
-      </div>
     </div>
   );
 };
+
 export default Accordion;
