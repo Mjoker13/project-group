@@ -9,7 +9,7 @@ const SearchBar = () => {
             placeholder="Search FAQ"
             aria-label="Search"
           ></input>
-          <button class="btn btn-outline-dark" type="submit">
+          <button className="btn btn-outline-dark" type="submit">
             Search
           </button>
         </form>
