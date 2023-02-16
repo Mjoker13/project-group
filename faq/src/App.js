@@ -8,7 +8,7 @@ const App = () => {
 
   const updateData = (str)=>{
     const dataUpdated = jsonText.filter((el)=>{
-      return el.title.includes(str) || el.text.includes(str);
+      return el.title.toLowerCase().includes(str.toLowerCase()) || el.text.toLowerCase().includes(str.toLowerCase());
     })
     setData(dataUpdated);
   }
