@@ -7,19 +7,21 @@ import Tooltip from "react-bootstrap/Tooltip";
 
 const Product = ({ product, incrementCart }) => {
   return (
-    <div className="card h-100  shadow-lg  col-sm-8 body " >
-      <div
-        className="card-header text-center "
-        style={{ height: "150px" }}
-      >
-        <img src={product.image} alt="product" style={{ height: "100%" }} />
+    <div className="card h-100 shadow-lg col-10 ">
+      <div className="card-header text-center " style={{ height: "150px" }}>
+        <img
+          className="img-fluid img-thumbnail"
+          src={product.image}
+          alt="product"
+          style={{ height: "100%" }}
+        />
       </div>
       <div className="card-body d-flex flex-column justify-content-between">
         <h4>{product.title}</h4>
-        <div className="row  d-flex">
+        <div className="row d-flex">
           <div className=" col-6"> {product.price} &euro;</div>
           <div className=" col-6 text-end">
-            {["bottom"].map((placement) => (
+            {["top"].map((placement) => (
               <OverlayTrigger
                 key={placement}
                 placement={placement}

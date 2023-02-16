@@ -6,7 +6,7 @@ const ProductList = ({ products, incrementCart }) => {
     return (
       <div
         key={el.id}
-        className="col-12 col-md-6 col-lg-4 d-flex justify-content-center mt-4 "
+        className="col-12 col-md-6 col-lg-4 d-flex justify-content-center"
       >
         <Product product={el} incrementCart={incrementCart} />
       </div>
