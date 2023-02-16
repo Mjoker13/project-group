@@ -1,0 +1,12 @@
+.desc {
+  overflow: auto;
+  color: rgb(122, 88, 37);
+}
+
+.btn {
+  background: linear-gradient(
+    180deg,
+    hsl(193, 73%, 72%) 20%,
+    hwb(183 60% 7%) 100%
+  );
+}

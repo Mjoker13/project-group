@@ -17,13 +17,12 @@ const csvData = `1;1. Pirate Ipsum;Arrr me hearties! Make traditional Latin walk
 17;17. Acciderbolina;Get fancy with Monocle Ipsum. Tophat not required.
 18;18. Perdincidunque;If online dating has made you a bit cynical, this is the lorem ipsum generator for you.
 19;19. Esticassi;For those with a flair for conspiracy, this Ancient Aliens generator will add some otherworldly color.
-20;19. Masticassi;Get fancy with Monocle Ipsum. Tophat not required.`;
+20;20. Masticassi;Get fancy with Monocle Ipsum. Tophat not required.`;
 
-export const jsonText = csvData.split('\n').map((line, index) => {
-  const [id, title, text] = line.split(';');
+export const jsonText = csvData.split("\n").map((line, index) => {
+  const [id, title, text] = line.split(";");
   return { id, title, text };
 });
-
 
 // Stampa il risultato
 console.log(jsonText);

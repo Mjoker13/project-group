@@ -15,7 +15,7 @@ const Accordion = ({ item, accordionState, setAccordionState, onClick }) => {
     setAccordionState(newAccordionState);
   };
 
-  const buttonClassNames = "accordion-button" + (isExpanded ? "" : " collapsed");
+  const buttonClassNames = "border border-light accordion-button" + (isExpanded ? "" : " collapsed ");
 
 
   return (
@@ -28,7 +28,7 @@ const Accordion = ({ item, accordionState, setAccordionState, onClick }) => {
         <div
           className={`collapse ${isExpanded ? "show" : "none"}`}
         >
-          <div className="accordion-body">{item.text}</div>
+          <div className="border border-info accordion-body">{item.text}</div>
         </div>
     </div>
   );
