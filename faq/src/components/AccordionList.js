@@ -13,9 +13,9 @@ const AccordionList = ({ data }) => {
   };
 
   return (
-    <div className=" row  ">
+    <div className="row">
       {data.map((item) => (
-        <div key={item.id} className=" col-12 col-md-6 col-lg-4 mt-5">
+        <div key={item.id} className="col-12 col-md-6 col-lg-4 mt-5">
         <Accordion
           key={item.id}
           item={item}
