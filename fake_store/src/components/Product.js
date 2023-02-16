@@ -5,8 +5,11 @@ import Tooltip from "react-bootstrap/Tooltip";
 
 const Product = ({ product, incrementCart }) => {
   return (
-    <div className="card h-100">
-      <div className="card-header text-center" style={{ height: "200px" }}>
+    <div className="card h-100  shadow-lg  col-sm-8">
+      <div
+        className="card-header text-center "
+        style={{ height: "150px" }}
+      >
         <img src={product.image} alt="product" style={{ height: "100%" }} />
       </div>
       <div className="card-body d-flex flex-column justify-content-between">
@@ -32,7 +35,7 @@ const Product = ({ product, incrementCart }) => {
       </div>
       <div className="card-footer text-center">
         <button
-          className="btn btn-info"
+          className="btn btn-info shadow-lg"
           onClick={() => {
             incrementCart(product);
           }}
