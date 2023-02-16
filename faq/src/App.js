@@ -4,15 +4,6 @@ import AccordionList from "./components/AccordionList";
 
 const App = () => {
   const [data, setData] = useState([]);
-  const [show, setShow] = useState(false);
-
-  const hendleColse = () => {
-    data.forEach((el) => {
-      if (!show) {
-       
-      }
-    });
-  };
 
   const updateData = (temp) => {
     let array = [...temp];
