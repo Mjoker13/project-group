@@ -10,7 +10,7 @@ const ProductList = ({ products, incrementCart }) => {
     );
   });
 
-  return <div className="row gy-3">{content}</div>;
+  return <div className="row gy-3 justify-content-center">{content}</div>;
 };
 
 export default ProductList;
