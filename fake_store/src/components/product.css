@@ -30,3 +30,8 @@
   );
   color: black;
 }
+
+body,
+ul {
+  background: rgb(243, 244, 229);
+}
