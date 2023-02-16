@@ -4,16 +4,23 @@ import AccordionList from "./components/AccordionList";
 import SearchBar from "./components/SearchBar";
 
 const App = () => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(jsonText);
 
-  const updateData = (temp) => {
-    let array = [...temp];
-    setData(array);
-  };
+  const updateData = (str)=>{
+    const dataUpdated = jsonText.filter((el)=>{
+      return el.title.includes(str) || el.text.includes(str);
+    })
+    setData(dataUpdated);
+  }
 
-  useEffect(() => {
-    updateData(jsonText);
-  }, []);
+  // const updateData = (temp) => {
+  //   let array = [...temp];
+  //   setData(array);
+  // };
+
+  // useEffect(() => {
+  //   updateData(jsonText);
+  // }, []);
 
   return (
     <div className="container text-center">
