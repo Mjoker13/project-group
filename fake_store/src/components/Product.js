@@ -3,9 +3,11 @@ import Button from "react-bootstrap/Button";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 
+
+
 const Product = ({ product, incrementCart }) => {
   return (
-    <div className="card h-100  shadow-lg  col-sm-8">
+    <div className="card h-100  shadow-lg  col-sm-8 body " >
       <div
         className="card-header text-center "
         style={{ height: "150px" }}
