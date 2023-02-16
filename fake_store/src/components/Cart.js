@@ -5,7 +5,7 @@ const Cart = ({ cart, decrementCart, incrementCart }) => {
   const [showList, setShowList] = useState(false);
 
   const toggleShowList = () => {
-    setShowList(!showList);
+    setShowList( !showList);
   };
  
   let content = <></>;
