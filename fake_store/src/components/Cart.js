@@ -48,7 +48,7 @@ const Cart = ({ cart, decrementCart, incrementCart }) => {
 
   return (
     <div className="alert alert-info">
-      <button className="btn btn-info btn-lg" onClick={toggleShowList}>
+      <button className="btn cart" onClick={toggleShowList}>
         <BsFillCartFill />
         <span className="badge bg-secondary">{cart.length}</span>
       </button>

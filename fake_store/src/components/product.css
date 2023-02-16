@@ -1,14 +1,15 @@
-.desc {
+/* .desc {
   overflow: auto;
   color: rgb(122, 88, 37);
-}
+} */
 
 .btn {
   background: linear-gradient(
     180deg,
-    hsl(193, 73%, 72%) 20%,
+    hsl(193, 78%, 29%) 20%,
     hwb(183 60% 7%) 100%
   );
+  color: white;
 }
 
 .btnCart {
@@ -19,4 +20,13 @@
   margin-left: 1%;
   margin-right: 1%;
   color: white;
+}
+
+.alert {
+  background: linear-gradient(
+    180deg,
+    hsl(79, 61%, 70%) 20%,
+    hwb(183 60% 7%) 100%
+  );
+  color: black;
 }
