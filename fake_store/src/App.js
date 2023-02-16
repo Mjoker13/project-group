@@ -63,7 +63,7 @@ const App = () => {
   }, []);
 
   return (
-    <div className="container">
+    <div className="container ">
       <Cart
         cart={cartProducts}
         decrementCart={handleDeleteClick}
