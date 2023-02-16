@@ -26,26 +26,23 @@ const App = () => {
 
   // create new product
   const handleAddClick = (product) => {
-    let newProduct;
     let found = false;
-    console.log(cartProducts);
     let newCart = cartProducts.filter((el) => {
       return true;
     });
-    console.log(newCart);
     newCart.forEach((el) => {
       if (el.id === product.id) {
         el.quantity++;
         found = true;
       }
     });
-    console.log("found", found);
 
     if (!found) {
       const newProduct = {
         id: product.id,
         title: product.title,
         quantity: 1,
+        price: product.price,
         index: cartProducts.length,
       };
       const newCart2 = [...newCart, newProduct];
