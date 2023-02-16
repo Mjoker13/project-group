@@ -6,14 +6,14 @@ const ProductList = ({ products, incrementCart }) => {
     return (
       <div
         key={el.id}
-        className="d-flex col-12 col-md-6 col-lg-4 justify-content-center"
+        className="col-12 col-md-6 col-lg-4 d-flex justify-content-center"
       >
         <Product product={el} incrementCart={incrementCart} />
       </div>
     );
   });
 
-  return <div className="row gy-3 ">{content}</div>;
+  return <div className="row gy-3">{content}</div>;
 };
 
 export default ProductList;
