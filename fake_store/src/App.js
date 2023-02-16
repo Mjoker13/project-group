@@ -7,21 +7,25 @@ const App = () => {
   const [data, setData] = useState([]);
   const [cartProducts, setCartProducts] = useState([]);
 
-  const handleProductClick = (product) => {
-    const newCart = [...cartProducts, product];
-    setCartProducts(newCart);
-  };
-
   const handleDeleteClick = (product) => {
-    // creare un nuovo array con tutti i produttoi del carrelllo
+    console.log(cartProducts);
     const newCart = cartProducts.filter((el) => {
-      return el.id !== product.id;
+      if (el.id === product.id) {
+        el.quantity--;
+        if (el.quantity === 0) {
+          return false;
+        }
+      }
+      return true;
     });
+
+    console.log(newCart);
+
     setCartProducts(newCart);
   };
 
   // create new product
-  const newProd = (product) => {
+  const handleAddClick = (product) => {
     let newProduct;
     let found = false;
     console.log(cartProducts);
@@ -30,14 +34,15 @@ const App = () => {
     });
     console.log(newCart);
     newCart.forEach((el) => {
-      if (el.id == product.id) {
+      if (el.id === product.id) {
         el.quantity++;
         found = true;
       }
     });
-    console.log("sono il new cart", newCart);
+    console.log("found", found);
+
     if (!found) {
-      newProduct = {
+      const newProduct = {
         id: product.id,
         title: product.title,
         quantity: 1,
@@ -45,8 +50,10 @@ const App = () => {
       };
       const newCart2 = [...newCart, newProduct];
       setCartProducts(newCart2);
+      console.log("newCart2: ", newCart2);
     } else {
       setCartProducts(newCart);
+      console.log("newCart: ", newCart);
     }
   };
 
@@ -60,12 +67,12 @@ const App = () => {
 
   return (
     <div className="container">
-      <Cart cart={cartProducts} decrementCart={handleDeleteClick} />
-      <ProductList
-        products={data}
-        incrementCart={handleProductClick}
-        newProd={newProd}
+      <Cart
+        cart={cartProducts}
+        decrementCart={handleDeleteClick}
+        incrementCart={handleAddClick}
       />
+      <ProductList products={data} incrementCart={handleAddClick} />
     </div>
   );
 };

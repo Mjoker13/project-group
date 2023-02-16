@@ -1,6 +1,6 @@
 import "./product.css";
 
-const Product = ({ product, incrementCart, newProd }) => {
+const Product = ({ product, incrementCart }) => {
   // const handleClick = () => {
   //   incrementCart(product);
   // };
@@ -13,13 +13,11 @@ const Product = ({ product, incrementCart, newProd }) => {
       <div className="card-body d-flex flex-column justify-content-between">
         <h4>{product.title}</h4>
         <div>{product.price} &euro;</div>
-        <div>{product.quantity}</div>
       </div>
       <div className="card-footer text-center">
         <button
           className="btn btn-info"
           onClick={() => {
-            newProd(product);
             incrementCart(product);
           }}
         >
