@@ -7,7 +7,7 @@ import Tooltip from "react-bootstrap/Tooltip";
 
 const Product = ({ product, incrementCart }) => {
   return (
-    <div className="card h-100 shadow-lg col-10 ">
+    <div className="card h-100 shadow-lg col-10 body ">
       <div className="card-header text-center " style={{ height: "150px" }}>
         <img
           className="img-fluid img-thumbnail"
