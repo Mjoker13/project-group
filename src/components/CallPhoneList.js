@@ -13,7 +13,7 @@ const CallPhoneList = ({ data = [] }) => {
         menuVariant="dark"
         drop="down"
         title="CallList"
-        className="mt-3 "
+        className="mt-2 "
         size="lg"
       >
         <Dropdown.Item>
