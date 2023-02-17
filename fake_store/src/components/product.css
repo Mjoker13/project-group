@@ -13,20 +13,24 @@
 }
 
 .btnCart {
-  background-color: rgb(148, 201, 219);
+  background: linear-gradient(
+    180deg,
+    hsl(0, 0%, 100%) 20%,
+    hwb(183 60% 7%) 100%
+  );
   font-size: xx-small;
   opacity: 0.5;
-  border-radius: 50%;
-  margin-left: 1%;
-  margin-right: 1%;
-  color: white;
+  border-radius: 20%;
+  margin-left: 2%;
+  margin-right: 2%;
+  color: black;
 }
 
 .alert {
   background: linear-gradient(
     180deg,
     hsl(79, 61%, 70%) 20%,
-    hwb(183 60% 7%) 100%
+    hwb(0 100% 0%) 100%
   );
   color: black;
 }
