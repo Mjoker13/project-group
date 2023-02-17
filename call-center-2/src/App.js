@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { findesubbyid, searchSub } from "./Api";
+import { deleteSub, searchSub, insertSub } from "./Api";
 import { SubscriberList } from "./components/SubscriberList";
 import { SearchBar } from "./components/SearchBar";
 import React, { Fragment } from "react";
@@ -16,21 +16,27 @@ const App = () => {
     updateData(key);
   };
 
+  const insertSubscriber = async () => {
+    const responseData = await insertSub();
+    setData(responseData);
+    updateData();
+  };
+
   useEffect(() => {
     updateData();
   }, []);
 
-  const deleteSubscriber=async(id)=>{
-  const responseData = await findesubbyid(id);
-   setData(responseData);
-   updateData();
-  }
+  const deleteSubscriber = async (id) => {
+    const responseData = await deleteSub(id);
+    setData(responseData);
+    updateData();
+  };
   return (
     <Fragment>
       <div className="container text-center bg-body-tertiary">
         <h1>Call Center</h1>
         <SearchBar callWhenSubmit={handleSeachBarSubmit} />
-        <SubscriberList data={data} onDelete={deleteSubscriber}/>
+        <SubscriberList data={data} onDelete={deleteSubscriber} />
       </div>
     </Fragment>
   );

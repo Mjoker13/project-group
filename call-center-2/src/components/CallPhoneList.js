@@ -1,8 +1,6 @@
 import CallPhone from "./CallPhone";
-import ButtonGroup from "react-bootstrap/ButtonGroup";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
-import SplitButton from "react-bootstrap/SplitButton";
 const CallPhoneList = ({ data = [] }) => {
   if (data.length === 0) return <div>No data to display</div>;
   return (
@@ -25,4 +23,4 @@ const CallPhoneList = ({ data = [] }) => {
     </div>
   );
 };
-export {CallPhoneList}
+export { CallPhoneList };

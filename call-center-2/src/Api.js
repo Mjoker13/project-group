@@ -2,7 +2,6 @@ const searchSub = async (key) => {
   let url = "http://localhost:8080/subscribers";
   if (key !== null && key !== undefined && key !== "") {
     url += "/sub?nome=" + key;
-   
   }
 
   try {
@@ -15,17 +14,16 @@ const searchSub = async (key) => {
   }
 };
 
-
-const findesubbyid = async (id) => {
+const deleteSub = async (id) => {
   let url = "http://localhost:8080/subscribers";
   if (id !== null && id !== undefined && id !== "") {
     url += "/delite/" + id;
   }
   try {
     const response = await fetch(url, {
-      method: "DELETE"
+      method: "DELETE",
     });
-    
+
     const data = await response.json();
     console.log(data);
     return data;
@@ -34,6 +32,21 @@ const findesubbyid = async (id) => {
   }
 };
 
-export {findesubbyid};
-export { searchSub };
+const insertSub = async () => {
+  let url = "http://localhost:8080/subscribers";
+  try {
+    const response = await fetch(url, {
+      method: "POST",
+    });
 
+    const data = await response.json();
+    console.log(data);
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export { insertSub };
+export { deleteSub };
+export { searchSub };
