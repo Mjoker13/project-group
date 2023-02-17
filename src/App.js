@@ -1,25 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState, useEffect } from "react";
+import { findesubbyid, searchSub } from "./Api";
+import { SubscriberList } from "./components/SubscriberList";
+import { SearchBar } from "./components/SearchBar";
+import React, { Fragment } from "react";
 
-function App() {
+const App = () => {
+  const [data, setData] = useState([]);
+
+  const updateData = async (key) => {
+    const responseData = await searchSub(key);
+    setData(responseData);
+  };
+
+  const handleSeachBarSubmit = async (key) => {
+    updateData(key);
+  };
+
+  useEffect(() => {
+    updateData();
+  }, []);
+
+  const deleteSubscriber=async(id)=>{
+  const responseData = await findesubbyid(id);
+   setData(responseData);
+   updateData();
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Fragment>
+      <div className="container text-center bg-body-tertiary">
+        <h1>Call Center</h1>
+        <SearchBar callWhenSubmit={handleSeachBarSubmit} />
+        <SubscriberList data={data} onDelete={deleteSubscriber}/>
+      </div>
+    </Fragment>
   );
-}
-
+};
 export default App;
