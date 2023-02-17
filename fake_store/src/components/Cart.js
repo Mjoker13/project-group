@@ -24,12 +24,15 @@ const Cart = ({ cart, decrementCart, incrementCart }) => {
         {cart.map((el) => {
           return (
             <li key={el.id}>
-              <div className="row">
-                <div className="col-6">
-                  {el.title} {el.price}
+              <div className="row ">
+                <div className="col-6 ">
+                  {el.title} {el.price} &euro;
                 </div>
-                <div className="col-6 text-end ">
-                  <button className="btnCart" onClick={() => decrementCart(el)}>
+                <div className="col-6 text-end  ">
+                  <button
+                    className="btnCart "
+                    onClick={() => decrementCart(el)}
+                  >
                     -
                   </button>
                   {el.quantity}
@@ -54,7 +57,7 @@ const Cart = ({ cart, decrementCart, incrementCart }) => {
       </button>
       {content}
       <div className="text-end">
-        Total <BsCart2 />: {calculateTotal()}
+        Total <BsCart2 />: {calculateTotal()} &euro;
         <hr />
       </div>
     </div>
