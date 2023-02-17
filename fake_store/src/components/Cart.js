@@ -1,6 +1,12 @@
-import { useState } from "react";
+//import { useState } from "react";
 import { BsFillCartFill, BsCart2 } from "react-icons/bs";
 import "./product.css";
+import { OffCanvas, OffCanvasMenu, OffCanvasBody } from "react-offcanvas";
+
+import React, { useState } from "react";
+import Button from "react-bootstrap/Button";
+import Offcanvas from "react-bootstrap/Offcanvas";
+
 
 const Cart = ({ cart, decrementCart, incrementCart }) => {
   const [showList, setShowList] = useState(false);
@@ -49,12 +55,17 @@ const Cart = ({ cart, decrementCart, incrementCart }) => {
     );
   }
 
+
+ 
+
   return (
     <div className="alert alert-info">
       <button className="btn cart mb-3" onClick={toggleShowList}>
         <BsFillCartFill />
+
         <span className="badge bg-secondary">{cart.length}</span>
       </button>
+     
       {content}
       <div className="text-end">
         Total <BsCart2 />: {calculateTotal()} &euro;

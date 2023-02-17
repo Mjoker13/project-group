@@ -69,7 +69,9 @@ const App = () => {
         decrementCart={handleDeleteClick}
         incrementCart={handleAddClick}
       />
+      <div className="row justify-content-center">
       <ProductList products={data} incrementCart={handleAddClick} />
+      </div>
     </div>
   );
 };

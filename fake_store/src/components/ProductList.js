@@ -12,7 +12,6 @@ const ProductList = ({ products, incrementCart }) => {
       </div>
     );
   });
-
   return <div className="row gy-3">{content}</div>;
 };
 
