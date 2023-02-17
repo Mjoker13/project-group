@@ -13,7 +13,7 @@ const CallPhoneList = ({ data = [] }) => {
         menuVariant="dark"
         drop="down"
         title="CallList"
-        className="mt-2 "
+        className="mt-3 "
         size="lg"
       >
         <Dropdown.Item>
@@ -25,4 +25,4 @@ const CallPhoneList = ({ data = [] }) => {
     </div>
   );
 };
-export {CallPhoneList}
+export { CallPhoneList };
