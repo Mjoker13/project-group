@@ -13,7 +13,7 @@ const SearchBar = ({ callWhenSubmit }) => {
     callWhenSubmit(inputValue);
   };
   return (
-    <nav className="navbar bg-dark mt-4">
+    <nav className="navbar bg-dark mt-3">
       <div className="container-fluid">
         <a className="navbar-brand  text-light">Navbar</a>
         <form className="d-flex" role="search" onSubmit={handleFormSubmit}>
