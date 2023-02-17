@@ -3,15 +3,14 @@ import { useState } from "react";
 const SearchBar = ({ callWhenSubmit }) => {
   const [inputValue, setInputValue] = useState("");
 
-
   const handleInput = (event) => {
     setInputValue(event.target.value);
     console.log(inputValue);
   };
   const handleFormSubmit = (event) => {
-  event.preventDefault();
-  console.log("SearchBar dice " + inputValue);
-  callWhenSubmit(inputValue);
+    event.preventDefault();
+    console.log("SearchBar dice " + inputValue);
+    callWhenSubmit(inputValue);
   };
   return (
     <nav className="navbar bg-dark mt-3">
@@ -35,4 +34,4 @@ const SearchBar = ({ callWhenSubmit }) => {
   );
 };
 
-export{SearchBar}
+export { SearchBar };
