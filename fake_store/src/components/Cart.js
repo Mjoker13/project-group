@@ -1,15 +1,18 @@
-//import { useState } from "react";
 import { BsFillCartFill, BsCart2 } from "react-icons/bs";
 import "./product.css";
 import React, { useState } from "react";
-import Button from "react-bootstrap/Button";
 import Offcanvas from "react-bootstrap/Offcanvas";
 
 const Cart = ({ cart, decrementCart, incrementCart }) => {
   const [showList, setShowList] = useState(false);
   const [show, setShow] = useState(false);
 
-  const toggleShowList = () => {
+  const handleClose = () => {
+    setShow(false);
+    setShowList(!showList);
+  };
+  const handleShow = () => {
+    setShow(true);
     setShowList(!showList);
   };
 
@@ -53,42 +56,23 @@ const Cart = ({ cart, decrementCart, incrementCart }) => {
     );
   }
 
-  const Example=()=> {
-    
-
-    
-
-    return (
-      <>
-        <Button variant="primary" onClick={handleShow}>
-          Launch
-        </Button>
-
-        <Offcanvas show={show} onHide={handleClose}>
-          <Offcanvas.Header closeButton>
-            <Offcanvas.Title>Offcanvas</Offcanvas.Title>
-          </Offcanvas.Header>
-          <Offcanvas.Body>{content}</Offcanvas.Body>
-        </Offcanvas>
-      </>
-    );
-  }
-
   return (
     <div className="alert alert-info">
-      <button className="btn cart mb-3" onClick={toggleShowList}>
+      <button className="btn cart mb-3" onClick={handleShow}>
         <BsFillCartFill />
 
         <span className="badge bg-secondary">{cart.length}</span>
       </button>
-      <>
-        <Example />
-      </>
-      {content}
-      <div className="text-end">
-        Total <BsCart2 />: {calculateTotal()} &euro;
-        <hr />
-      </div>
+      <Offcanvas className="alert" show={show} onHide={handleClose}>
+        <Offcanvas.Header closeButton>
+          <Offcanvas.Title>Offcanvas</Offcanvas.Title>
+        </Offcanvas.Header>
+        <Offcanvas.Body>{content}</Offcanvas.Body>
+        <div className="text-end">
+          Total <BsCart2 />: {calculateTotal()} &euro;
+          <hr />
+        </div>
+      </Offcanvas>
     </div>
   );
 };
