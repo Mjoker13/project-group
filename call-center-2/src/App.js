@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { deleteSub, searchSub, insertSub } from "./Api";
+import { deleteSub, searchSub } from "./Api";
 import { SubscriberList } from "./components/SubscriberList";
 import { SearchBar } from "./components/SearchBar";
 import React, { Fragment } from "react";
@@ -16,11 +16,11 @@ const App = () => {
     updateData(key);
   };
 
-  const insertSubscriber = async () => {
-    const responseData = await insertSub();
-    setData(responseData);
-    updateData();
-  };
+  // const insertSubscriber = async () => {
+  //   const responseData = await insertSub();
+  //   setData(responseData);
+  //   updateData();
+  // };
 
   useEffect(() => {
     updateData();

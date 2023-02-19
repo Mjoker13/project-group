@@ -1,13 +1,10 @@
 import { Subscriber } from "./Subscriber";
-import StyleCard from "./CssCustom/StyleCard.css";
+import "./CssCustom/StyleCard.css";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import Back from "./CssCustom/BackgroundCarousel.css";
-
 
 const responsive = {
   superLargeDesktop: {
-    // the naming can be any, depends on you.
     breakpoint: { max: 4000, min: 3000 },
     items: 5,
   },
@@ -32,7 +29,7 @@ const SubscriberList = ({ data = [], onDelete }) => {
       return <div className="alert alert-info">No data to display</div>;
     }
     return (
-      <Carousel className=" " responsive={responsive}>
+      <Carousel className="bg-secondary " responsive={responsive}>
         {data.map((element) => {
           return (
             <div key={element.id} className="col-12 col-sm-6 col-lg-4">

@@ -1,15 +1,12 @@
 import Image from "./img/images.jpg";
 import { CallPhoneList } from "./CallPhoneList";
-import { useState } from "react";
+import "./CssCustom/StyleCard.css";
 
 const Subscriber = ({ item, onDelete }) => {
-
-const [createSub, setCreateSub] = useState(false);
-
-const handleDeleteSubscriber=()=>{
-  const answer = window.confirm('Confirm delete?');
+  const handleDeleteSubscriber = () => {
+    const answer = window.confirm("Confirm delete?");
     if (answer) onDelete(item.id);
-}
+  };
 
   return (
     <div
@@ -32,8 +29,12 @@ const handleDeleteSubscriber=()=>{
           </li>
         </ul>
 
-        <button className=" bg-primary" onClick={handleDeleteSubscriber}>
-          <i className="fa fa-trash" aria-hidden="true"></i>
+        <button
+          className=" bg-secondary text-white "
+          onClick={handleDeleteSubscriber}
+        >
+          Delete
+          <i className="fa fa-trash ms-2" aria-hidden="true"></i>
         </button>
       </div>
     </div>

@@ -32,13 +32,16 @@ const deleteSub = async (id) => {
   }
 };
 
-const insertSub = async () => {
+const insertSub = async (subscribers) => {
   let url = "http://localhost:8080/subscribers";
   try {
     const response = await fetch(url, {
       method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(subscribers),
     });
-
     const data = await response.json();
     console.log(data);
     return data;
@@ -47,6 +50,6 @@ const insertSub = async () => {
   }
 };
 
-export { insertSub };
+export default insertSub;
 export { deleteSub };
 export { searchSub };
