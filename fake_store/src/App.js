@@ -18,9 +18,6 @@ const App = () => {
       }
       return true;
     });
-
-    console.log(newCart);
-
     setCartProducts(newCart);
   };
 
@@ -47,10 +44,8 @@ const App = () => {
       };
       const newCart2 = [...newCart, newProduct];
       setCartProducts(newCart2);
-      console.log("newCart2: ", newCart2);
     } else {
       setCartProducts(newCart);
-      console.log("newCart: ", newCart);
     }
   };
 
@@ -70,7 +65,7 @@ const App = () => {
         incrementCart={handleAddClick}
       />
       <div className="row justify-content-center">
-      <ProductList products={data} incrementCart={handleAddClick} />
+        <ProductList products={data} incrementCart={handleAddClick} />
       </div>
     </div>
   );

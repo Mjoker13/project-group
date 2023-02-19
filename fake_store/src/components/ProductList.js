@@ -1,7 +1,6 @@
 import Product from "./Product";
 
 const ProductList = ({ products, incrementCart }) => {
-  //console.log(products, incrementCart);
   const content = products.map((el) => {
     return (
       <div
