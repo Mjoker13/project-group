@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ModalInsert from "./Modal";
 
-const SearchBar = ({ callWhenSubmit }) => {
+const SearchBar = ({ callWhenSubmit, insert }) => {
   const [inputValue, setInputValue] = useState("");
 
   const handleInput = (event) => {
@@ -18,7 +18,7 @@ const SearchBar = ({ callWhenSubmit }) => {
     <nav className="navbar bg-dark mt-3">
       <div className="container-fluid">
         <a className="navbar-brand  text-light">Navbar</a>
-        <ModalInsert />
+        <ModalInsert insert={insert} />
         <form className="d-flex" role="search" onSubmit={handleFormSubmit}>
           <input
             className="form-control me-2"

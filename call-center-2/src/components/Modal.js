@@ -2,9 +2,10 @@ import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
-import insertSub from "../Api";
+import {insertSub} from "../Api";
 
-const ModalInsert = () => {
+const ModalInsert = ({ insert }) => {
+  console.log("Ciao Sono")
   const defaultInputState = {
     firstname: "",
     lastname: "",
@@ -49,7 +50,7 @@ const ModalInsert = () => {
     event.preventDefault();
     const errorObject = validate(inputState);
     if (Object.keys(errorObject).length === 0) {
-      insertSub(inputState);
+      insert(inputState);
     } else {
       setInputErrors(errorObject);
     }
