@@ -1,11 +1,16 @@
 import Image from "./img/images.jpg";
 import { CallPhoneList } from "./CallPhoneList";
 import "./CssCustom/StyleCard.css";
+import { BsFillTelephonePlusFill, BsFillTelephoneXFill } from "react-icons/bs";
 
 const Subscriber = ({ item, onDelete }) => {
   const handleDeleteSubscriber = () => {
     const answer = window.confirm("Confirm delete?");
     if (answer) onDelete(item.id);
+  };
+
+  const startCallPhone = () => {
+    return <>const start= Date.now console.log(start);</>;
   };
 
   return (
@@ -28,14 +33,30 @@ const Subscriber = ({ item, onDelete }) => {
             <CallPhoneList data={item.phoneCallSet} />
           </li>
         </ul>
-
-        <button
-          className=" bg-secondary text-white "
-          onClick={handleDeleteSubscriber}
-        >
-          Delete
-          <i className="fa fa-trash ms-2" aria-hidden="true"></i>
-        </button>
+        <h6> Create a new call phone</h6>
+        <div className="mt-3 d-flex justify-content-around">
+          <button
+            className="btn btn-outline-success btn-sm"
+            onClick={startCallPhone}
+          >
+            <BsFillTelephonePlusFill /> start
+          </button>
+          <button
+            className="btn  btn-outline-danger btn-sm"
+            //onClick={endCallPhone}
+          >
+            <BsFillTelephoneXFill /> end
+          </button>
+        </div>
+        <div className="mt-3">
+          <button
+            className=" bg-secondary text-white "
+            onClick={handleDeleteSubscriber}
+          >
+            Delete
+            <i className="fa fa-trash ms-2" aria-hidden="true"></i>
+          </button>
+        </div>
       </div>
     </div>
   );
