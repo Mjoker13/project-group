@@ -10,7 +10,7 @@ const ModalInsert = () => {
     lastname: "",
     cityofbirth: "",
     dob: "",
-    credit: "",
+    credit: 0,
   };
   const [inputState, setInputState] = useState(defaultInputState);
   const [inputErrors, setInputErrors] = useState({});
@@ -122,7 +122,7 @@ const ModalInsert = () => {
               </Form.Control.Feedback>
               <Form.Label className="mt-3">Credit</Form.Label>
               <Form.Control
-                type="number"
+                type="double"
                 placeholder="credit"
                 value={inputState.credit}
                 onChange={(e) => {
