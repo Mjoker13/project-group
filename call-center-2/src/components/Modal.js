@@ -2,10 +2,10 @@ import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
-import {insertSub} from "../Api";
+import { insertSub } from "../Api";
 
 const ModalInsert = ({ insert }) => {
-  console.log("Ciao Sono")
+  console.log("Ciao Sono");
   const defaultInputState = {
     firstname: "",
     lastname: "",
