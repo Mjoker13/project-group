@@ -3,12 +3,14 @@ import { deleteSub, searchSub, insertSub } from "../Api";
 import { SubscriberList } from "../components/SubscriberList";
 import SearchBar from "../components/SearchBar";
 import React, { Fragment } from "react";
+import { Link } from "react-router-dom";
 
 const HomePage = () => {
   const [data, setData] = useState([]);
 
   const updateData = async (key) => {
     const responseData = await searchSub(key);
+    console.log(responseData);
     setData(responseData);
   };
 
@@ -24,7 +26,6 @@ const HomePage = () => {
 
   useEffect(() => {
     updateData();
-    document.title = "Home";
   }, []);
 
   const deleteSubscriber = async (id) => {
@@ -39,6 +40,7 @@ const HomePage = () => {
         <SearchBar
           callWhenSubmit={handleSeachBarSubmit}
           insert={insertSubscriber}
+          nav={"navbar bg-dark mt-3"}
         />
         <SubscriberList data={data} onDelete={deleteSubscriber} />
       </div>

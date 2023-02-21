@@ -1,8 +1,12 @@
 import { useState } from "react";
 import ModalInsert from "./Modal";
 
-const SearchBar = ({ callWhenSubmit, insert }) => {
+const SearchBar = ({ callWhenSubmit, insert, nav }) => {
   const [inputValue, setInputValue] = useState("");
+  const [layout, setLayout] = useState({
+    NavbarColor: "navbar bg-dark mt-3",
+    buttonColor: "btn btn-outline-success",
+  });
 
   const handleInput = (event) => {
     setInputValue(event.target.value);
@@ -15,7 +19,7 @@ const SearchBar = ({ callWhenSubmit, insert }) => {
   };
 
   return (
-    <nav className="navbar bg-dark mt-3">
+    <nav className={layout.NavbarColor}>
       <div className="container-fluid">
         <a className="navbar-brand  text-light">Navbar</a>
         <ModalInsert insert={insert} />
@@ -28,7 +32,7 @@ const SearchBar = ({ callWhenSubmit, insert }) => {
             onChange={handleInput}
             value={inputValue}
           />
-          <button className="btn btn-outline-success" type="submit">
+          <button className={layout.buttonColor} type="submit">
             Search
           </button>
         </form>

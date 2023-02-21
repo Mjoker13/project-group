@@ -3,7 +3,7 @@ const searchSub = async (key) => {
   if (key !== null && key !== undefined && key !== "") {
     url += "/sub?nome=" + key;
   }
-
+  console.log(url);
   try {
     const response = await fetch(url);
     const data = await response.json();

@@ -1,5 +1,4 @@
 import Image from "./img/images.jpg";
-import { useEffect } from "react";
 import { CallPhoneList } from "./CallPhoneList";
 import "./CssCustom/StyleCard.css";
 import { BsFillTelephonePlusFill, BsFillTelephoneXFill } from "react-icons/bs";
@@ -13,10 +12,6 @@ const Subscriber = ({ item, onDelete }) => {
   const startCallPhone = () => {
     return <>const start= Date.now console.log(start);</>;
   };
-
-  useEffect(() => {
-    document.title = "sub";
-  }, []);
 
   return (
     <div
