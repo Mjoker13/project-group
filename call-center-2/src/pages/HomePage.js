@@ -3,7 +3,6 @@ import { deleteSub, searchSub, insertSub } from "../Api";
 import { SubscriberList } from "../components/SubscriberList";
 import SearchBar from "../components/SearchBar";
 import React, { Fragment } from "react";
-import { Link } from "react-router-dom";
 
 const HomePage = () => {
   const [data, setData] = useState([]);
