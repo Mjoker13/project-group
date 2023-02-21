@@ -50,6 +50,6 @@ const insertSub = async (subscribers) => {
   }
 };
 
-export  {insertSub};
+export { insertSub };
 export { deleteSub };
 export { searchSub };

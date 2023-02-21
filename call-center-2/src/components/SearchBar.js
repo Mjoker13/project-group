@@ -37,4 +37,4 @@ const SearchBar = ({ callWhenSubmit, insert }) => {
   );
 };
 
-export { SearchBar };
+export default SearchBar;

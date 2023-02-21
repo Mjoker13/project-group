@@ -2,16 +2,14 @@ import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
-import { insertSub } from "../Api";
 
 const ModalInsert = ({ insert }) => {
-  console.log("Ciao Sono");
   const defaultInputState = {
     firstname: "",
     lastname: "",
     cityofbirth: "",
     dob: "",
-    credit: 0,
+    cretid: "",
   };
   const [inputState, setInputState] = useState(defaultInputState);
   const [inputErrors, setInputErrors] = useState({});
@@ -39,10 +37,9 @@ const ModalInsert = ({ insert }) => {
     if (inputObject.dob >= Date.now()) {
       errorObj.dob = "not valid";
     }
-    if (inputObject.credit < 0) {
-      errorObj.credit = "credit more 0";
+    if (inputObject.cretid < 0) {
+      errorObj.cretid = "credit more 0";
     }
-
     return errorObj;
   };
 
@@ -51,6 +48,7 @@ const ModalInsert = ({ insert }) => {
     const errorObject = validate(inputState);
     if (Object.keys(errorObject).length === 0) {
       insert(inputState);
+      setInputState(defaultInputState);
     } else {
       setInputErrors(errorObject);
     }
@@ -123,11 +121,12 @@ const ModalInsert = ({ insert }) => {
               </Form.Control.Feedback>
               <Form.Label className="mt-3">Credit</Form.Label>
               <Form.Control
-                type="double"
-                placeholder="credit"
-                value={inputState.credit}
+                type="number"
+                step=".01"
+                placeholder="Credit"
+                value={inputState.cretid}
                 onChange={(e) => {
-                  handleInputChange("credit", e.target.value);
+                  handleInputChange("cretid", e.target.value);
                 }}
                 isInvalid={inputErrors.credit ? true : false}
               />

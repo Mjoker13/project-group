@@ -1,4 +1,5 @@
 import Image from "./img/images.jpg";
+import { useEffect } from "react";
 import { CallPhoneList } from "./CallPhoneList";
 import "./CssCustom/StyleCard.css";
 import { BsFillTelephonePlusFill, BsFillTelephoneXFill } from "react-icons/bs";
@@ -13,6 +14,10 @@ const Subscriber = ({ item, onDelete }) => {
     return <>const start= Date.now console.log(start);</>;
   };
 
+  useEffect(() => {
+    document.title = "sub";
+  }, []);
+
   return (
     <div
       className="card border border-0 shadow p-3 bg-body rounded "
@@ -24,10 +29,12 @@ const Subscriber = ({ item, onDelete }) => {
           {item.firstname} {item.lastname}
         </h5>
         <ul className="list-group  ">
-          <li className="list-group-item list-group-item-info">Id:{item.id}</li>
+          <li className="list-group-item list-group-item-info">
+            Id: {item.id}
+          </li>
 
-          <li className="list-group-item">Dob:{item.dob}</li>
-          <li className="list-group-item">City:{item.cityofbirth}</li>
+          <li className="list-group-item">Dob: {item.dob}</li>
+          <li className="list-group-item">City: {item.cityofbirth}</li>
           <li className="list-group-item">Credito: {item.cretid}</li>
           <li className="list-group-item dropdown">
             <CallPhoneList data={item.phoneCallSet} />
