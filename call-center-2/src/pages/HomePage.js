@@ -40,7 +40,6 @@ const HomePage = () => {
         <SearchBar
           callWhenSubmit={handleSeachBarSubmit}
           insert={insertSubscriber}
-          nav={"navbar bg-dark mt-3"}
         />
         <SubscriberList data={data} onDelete={deleteSubscriber} />
       </div>

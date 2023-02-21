@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ModalInsert from "./Modal";
 
-const SearchBar = ({ callWhenSubmit, insert, nav }) => {
+const SearchBar = ({ callWhenSubmit, insert }) => {
   const [inputValue, setInputValue] = useState("");
   const [layout, setLayout] = useState({
     NavbarColor: "navbar bg-dark mt-3",
