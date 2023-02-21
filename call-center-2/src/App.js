@@ -7,6 +7,7 @@ import { insertSub } from "./Api";
 
 const App = () => {
   const [data, setData] = useState([]);
+   const [dateTime, setDateTime] = useState(new Date());
 
   const updateData = async (key) => {
     const responseData = await searchSub(key);
@@ -22,19 +23,37 @@ const App = () => {
     setData(responseData);
     updateData();
   };
+ const interval =()=>{
+   setInterval(() => {
+     setDateTime(new Date());
+   }, 1000);
+ }
 
   useEffect(() => {
     updateData();
+   
+
+    return () => clearInterval(interval);
   }, []);
+
+  
 
   const deleteSubscriber = async (id) => {
     const responseData = await deleteSub(id);
     setData(responseData);
     updateData();
   };
+
+  const handleStartCall=()=>{
+
+
+  }
   return (
     <Fragment>
       <div className="container text-center bg-body-tertiary">
+        <div>
+          <p>{dateTime.toLocaleString()}</p>
+        </div>
         <h1>Call Center</h1>
         <SearchBar
           callWhenSubmit={handleSeachBarSubmit}
