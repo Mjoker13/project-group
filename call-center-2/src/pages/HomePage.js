@@ -3,9 +3,23 @@ import { deleteSub, searchSub, insertSub } from "../Api";
 import { SubscriberList } from "../components/SubscriberList";
 import SearchBar from "../components/SearchBar";
 import React, { Fragment } from "react";
+import { getColors } from "../Api";
+
 
 const HomePage = () => {
   const [data, setData] = useState([]);
+
+
+    const [layout, setLayout] = useState({
+      NavbarColor: "navbar bg-dark mt-3",
+      buttonColor: "btn btn-outline-success",
+    });
+
+    const handleLayout = async () => {
+      const response = await getColors();
+        setLayout(response);
+        console.log(response);
+    };
 
   const updateData = async (key) => {
     const responseData = await searchSub(key);
@@ -25,6 +39,7 @@ const HomePage = () => {
 
   useEffect(() => {
     updateData();
+    handleLayout();
   }, []);
 
   const deleteSubscriber = async (id) => {
