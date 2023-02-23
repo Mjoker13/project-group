@@ -1,8 +1,9 @@
 import { useState } from "react";
 import ModalInsert from "./Modal";
+import { useParams } from "react-router-dom";
 
 
-const SearchBar = ({ callWhenSubmit, insert }) => {
+const SearchBar = ({ callWhenSubmit, insert, navbarColor, layout }) => {
   const [inputValue, setInputValue] = useState("");
 
 
@@ -15,9 +16,9 @@ const SearchBar = ({ callWhenSubmit, insert }) => {
     console.log("SearchBar dice " + inputValue);
     callWhenSubmit(inputValue);
   };
-
+console.log("sono il layout di searchbar",layout)
   return (
-    <nav className="navbar bg-dark mt-3">
+    <nav className={`navbar ${layout} mt-3`}>
       <div className="container-fluid">
         <a className="navbar-brand  text-light">Navbar</a>
         <ModalInsert insert={insert} />

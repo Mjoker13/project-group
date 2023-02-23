@@ -50,7 +50,7 @@ const insertSub = async (subscribers) => {
   }
 };
 
-export const getColors = async () => {
+export const getColorsApi = async () => {
   let url = "http://localhost:8080/ap1/colors";
   console.log(url);
   try {

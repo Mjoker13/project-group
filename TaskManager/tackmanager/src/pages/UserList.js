@@ -1,12 +1,12 @@
-import { useState, useEffect } from "react";
-import { Alert, Badge } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from 'react';
+import { Alert, Badge } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import {
   BsFillTrashFill,
   BsPencilFill,
   BsFillArrowRightCircleFill,
-} from "react-icons/bs";
-import { getUsers, deleteUserById } from "./Api";
+} from 'react-icons/bs';
+import { getUsers, deleteUserById } from '../api';
 
 const UserList = () => {
   const [users, setUsers] = useState([]);
@@ -69,7 +69,10 @@ const UserList = () => {
                 >
                   <BsFillTrashFill />
                 </button>
-                <Link to="/" className="btn btn-sm btn-primary">
+                <Link
+                  to={`/${user.id}/tasks`}
+                  className="btn btn-sm btn-primary"
+                >
                   <BsFillArrowRightCircleFill />
                 </Link>
               </div>
