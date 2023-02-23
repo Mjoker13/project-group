@@ -2,19 +2,31 @@ import { Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import { Admin } from "./pages/Admin";
 import { useState, useEffect } from "react";
+import { getLayoutApi } from "./Api";
 
 const App = () => {
+ 
+ 
   const [layout, setLayout] = useState([
-    { key: "navbar", value: "bg-dark" },
-    { key: "buttonCallPhone", value: "bg-primary" },
-    { key: "buttonDelite", value: "bg-primary" },
+    {
+      chiave: "navbar",
+      valore: "bg-dark",
+    },
   ]);
 
-console.log("array di layout",{layout})
+    const getLayout = async () => {
+      const result = await getLayoutApi();
+      console.log("sono result", result);
+      setLayout(result);
+     
+    };
 
-useEffect(()=>{
- console.log("useEffect ",{layout})
-},[])
+   
+ 
+  useEffect(() => {
+  getLayout();
+  console.log(layout)
+  }, []);
 
   return (
     <Routes>
