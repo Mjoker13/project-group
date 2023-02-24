@@ -2,12 +2,14 @@ import { Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import { Admin } from "./pages/Admin";
 import { useState, useEffect } from "react";
+import { getLayoutApi } from "./Api";
 
 const App = () => {
   const [layout, setLayout] = useState([
-    { key: "navbar", value: "bg-dark" },
-    { key: "buttonCallPhone", value: "bg-primary" },
-    { key: "buttonDelite", value: "bg-primary" },
+    {
+      chiave: "navbar",
+      valore: "bg-dark",
+    },
   ]);
 
   useEffect(() => {

@@ -85,3 +85,37 @@ export const putTask = async (task, taskId, userId) => {
     return { ok: false, data: error };
   }
 };
+
+export const deleteTaskById = async (userId, taskId) => {
+  try {
+    const response = await fetch(
+      `${BASE_URL_USERS}/${userId}/tasks/${taskId}`,
+      {
+        method: 'DELETE',
+      }
+    );
+    if (response.ok) {
+      return { ok: true, data: 'Success' };
+    } else {
+      return { ok: false, data: await response.json() };
+    }
+  } catch (error) {
+    return { ok: false, data: error };
+  }
+};
+
+export const postUserTask = async (userId, task) => {
+  try {
+    const response = await fetch(`${BASE_URL_USERS}/${userId}/tasks`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(task),
+    });
+    const data = await response.json();
+    return { ok: response.ok, data: data };
+  } catch (error) {
+    return { ok: false, data: error };
+  }
+};

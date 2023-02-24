@@ -7,13 +7,22 @@ import {
   BsClipboardX,
 } from 'react-icons/bs';
 
-const TaskItem = ({ task, onUpdateTask }) => {
+const TaskItem = ({ task, onUpdateTask, onDeleteTask }) => {
   const toggleCompleted = () => {
     // invertire l'attributo completed
     const updatedTask = { ...task, completed: !task.completed };
     console.log(updatedTask);
     // passare il task con l'attributo modificato alla put
     onUpdateTask(updatedTask, task.id);
+  };
+
+  const handleDeleteClick = () => {
+    // chiedo conferma
+    const confirm = window.confirm('Are you sure?');
+    // eseguo la delete
+    if (confirm) {
+      onDeleteTask(task.id);
+    }
   };
 
   return (
@@ -26,12 +35,16 @@ const TaskItem = ({ task, onUpdateTask }) => {
           className="c_task-toggle"
           onClick={toggleCompleted}
         >
-          <BsClipboardCheck />
+          {task.completed ? <BsClipboardX /> : <BsClipboardCheck />}
         </Button>
       </Card.Body>
       <Card.Footer>
-        <BsFillTrashFill />
-        <BsPencilFill />
+        <Button variant="light" onClick={handleDeleteClick}>
+          <BsFillTrashFill />
+        </Button>
+        <Button variant="light">
+          <BsPencilFill />
+        </Button>
       </Card.Footer>
     </Card>
   );

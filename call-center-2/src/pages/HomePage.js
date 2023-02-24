@@ -37,11 +37,11 @@ const HomePage = ({layout}) => {
   };
   const getColorNavbar = () => {
     const elNavbar = layout.filter((el) => {
-      return  el.key === "navbar"
+      return  el.chiave === "navbar"
     });
    
-    console.log(elNavbar[0].value);
-    return elNavbar[0].value;
+   
+    return elNavbar[0].valore;
   };
   return (
     <Fragment>

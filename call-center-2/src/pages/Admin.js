@@ -1,36 +1,46 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { getColorsApi } from "../Api";
+import { BsFillArrowUpSquareFill } from "react-icons/bs";
+import { Button } from "react-bootstrap";
+import { insertLayoutApi } from "../Api";
 
 export const Admin = ({ layout, setLayout }) => {
   const [colors, setColors] = useState([]);
-
-  
+  const [selectedValue, setSelectedValue] = useState([]);
 
   const getColors = async () => {
     const response = await getColorsApi();
     setColors(response);
     console.log(response);
   };
+  const saveLayout=async(event)=>{
+    event.preventDefault();
+    console.log("llllllll", {selectedValue});
+    const result = await insertLayoutApi( selectedValue.valore );
+    console.log("sono il result",result)
+    return result;
+  }
+
 
   useEffect(() => {
     getColors();
   }, []);
 
-  console.log("i colori che  vengono da DB:", { colors });
-
   const handleColor = (e, key) => {
-  const updateLayout=  layout.filter((el) => {
-      if (el.key === key) {
-        el.value = e.target.value;
+    const updateLayout = layout.filter((el) => {
+      if (el.chiave === key) {
+        el.valore = e.target.value;
+        setSelectedValue(el);
       }
     });
-    console.log("Sono il  layout modificato",updateLayout)
-    setLayout(layout)
+
+    setLayout(layout);
+
     return true;
   };
 
-  
+
 
   return (
     <div>
@@ -40,15 +50,19 @@ export const Admin = ({ layout, setLayout }) => {
           handleColor(e, "navbar");
         }}
       >
-        <option selected>Open this select menu</option>
+        <option selected>Open this select menu</option>{" "}
         {colors.map((el) => {
           return (
             <option key={el.id} value={el.colorName}>
-              {el.colorName}
+              {el.colorName},
             </option>
           );
         })}
       </select>
+      <Button variant="success" onClick={saveLayout}>
+        Save Layout
+        <BsFillArrowUpSquareFill />
+      </Button>
       <Link to="/">homepage</Link>
     </div>
   );
