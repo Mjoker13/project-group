@@ -52,7 +52,51 @@ const insertSub = async (subscribers) => {
   }
 };
 
-const insertPhonecall = async (id) => {
+export const insertLayoutApi = async (chiave, valore) => {
+  let url = `http://localhost:8080/api1/layout/${chiave}`;
+  try {
+    const response = await fetch(url, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(valore),
+    });
+    const data = await response.json();
+    console.log(data);
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getColorsApi = async () => {
+  let url = "http://localhost:8080/ap1/colors";
+  console.log(url);
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    console.log(data);
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getLayoutApi = async () => {
+  let url = "http://localhost:8080/api1/layout";
+  console.log(url);
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    console.log(data);
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const insertPhonecall = async (id, CallPhone) => {
   let url = "http://localhost:8080/phonecalls";
   if (id !== null && id !== undefined && id !== "") {
     url += "/" + id;

@@ -15,6 +15,7 @@ const Subscriber = ({ item, onDelete }) => {
   const [phonecalls, setPhonecalls] = useState([]);
   const [start, setStart] = useState("");
   const [end, setEnd] = useState("");
+  const [call, setCall] = useState([]);
 
   const handleDeleteSubscriber = () => {
     const answer = window.confirm("Confirm delete?");
@@ -23,24 +24,38 @@ const Subscriber = ({ item, onDelete }) => {
 
   const getAllPhoneCalls = async () => {
     const data = await getallPhonecalls();
-    setPhonecalls(data);
+    
+    (data);
     console.log(phonecalls);
   };
 
   const updatePhonecalls = async (id) => {
-    const responseData = await insertPhonecall(id);
-    if (responseData.ok) {
+      savephonecalls();
+   
+     for (let index = 0; index < call.length; index++) {
+     setStart(call[0])
+      console.log("sono S",start)
+     setEnd (call[1])
+      console.log("sono E", end);
+     }
       const newPhoneCall = {
         start: start,
         end: end,
         rate: 0.4,
       };
-      console.log(newPhoneCall);
-      setPhonecalls(newPhoneCall);
-    } else {
-      window.alert("error");
-    }
+      const responseData = await insertPhonecall(id,newPhoneCall);
+      console.log("sono il nuovo", newPhoneCall);
+      
+ 
   };
+
+  const savephonecalls = () => {
+    const call = [start, end];
+    console.log("sono l'array salvato", call);
+    setCall(call);
+  };
+
+  console.log("sono la call",call)
 
   const startPhonecalls = () => {
     let startTemp = new Date();
@@ -62,6 +77,7 @@ const Subscriber = ({ item, onDelete }) => {
 
   useEffect(() => {
     getAllPhoneCalls();
+   
   }, []);
 
   return (
@@ -105,6 +121,7 @@ const Subscriber = ({ item, onDelete }) => {
           className="primary"
           onClick={() => {
             console.log(phonecalls);
+          
             updatePhonecalls(item.id);
           }}
         >
