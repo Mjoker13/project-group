@@ -17,7 +17,7 @@ export const Admin = ({ layout, setLayout }) => {
   const saveLayout=async(event)=>{
     event.preventDefault();
     console.log("llllllll", {selectedValue});
-    const result = await insertLayoutApi( selectedValue.valore );
+    const result = await insertLayoutApi( selectedValue.chiave,selectedValue );
     console.log("sono il result",result)
     return result;
   }
