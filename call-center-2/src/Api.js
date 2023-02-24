@@ -1,5 +1,3 @@
-import CallPhone from "./components/CallPhone";
-
 const searchSub = async (key) => {
   let url = "http://localhost:8080/subscribers";
   if (key !== null && key !== undefined && key !== "") {
@@ -52,6 +50,7 @@ const insertSub = async (subscribers) => {
   }
 };
 
+<<<<<<< HEAD
 export const insertLayoutApi = async (chiave, valore) => {
   let url = `http://localhost:8080/api1/layout/${chiave}`;
   try {
@@ -96,6 +95,8 @@ export const getLayoutApi = async () => {
   }
 };
 
+=======
+>>>>>>> aa92a34a8cae98c239f1ef91d77dca1f5eb26782
 const insertPhonecall = async (id, CallPhone) => {
   let url = "http://localhost:8080/phonecalls";
   if (id !== null && id !== undefined && id !== "") {

@@ -30,23 +30,15 @@ const Subscriber = ({ item, onDelete }) => {
   };
 
   const updatePhonecalls = async (id) => {
-      savephonecalls();
-   
-     for (let index = 0; index < call.length; index++) {
-     setStart(call[0])
-      console.log("sono S",start)
-     setEnd (call[1])
-      console.log("sono E", end);
-     }
-      const newPhoneCall = {
-        start: start,
-        end: end,
-        rate: 0.4,
-      };
-      const responseData = await insertPhonecall(id,newPhoneCall);
-      console.log("sono il nuovo", newPhoneCall);
-      
- 
+    const newPhoneCall = {
+      start: start,
+      end: end,
+      rate: 0.4,
+    };
+    const responseData = await insertPhonecall(id, newPhoneCall);
+    console.log(newPhoneCall);
+    setPhonecalls(responseData);
+    console.log(phonecalls);
   };
 
   const savephonecalls = () => {
