@@ -16,14 +16,13 @@ export const Admin = ({ layout, setLayout }) => {
     console.log(response);
   };
   const saveLayout=async(event)=>{
-event.preventDefault()
+    event.preventDefault();
     console.log("llllllll", {selectedValue});
- const result = await insertLayoutApi( selectedValue.valore );
- console.log("sono il result",result)
-return result;
+    const result = await insertLayoutApi( selectedValue.valore );
+    console.log("sono il result",result)
+    return result;
   }
 
-  
 
   useEffect(() => {
     getColors();
