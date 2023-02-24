@@ -28,18 +28,15 @@ const Subscriber = ({ item, onDelete }) => {
   };
 
   const updatePhonecalls = async (id) => {
-    const responseData = await insertPhonecall(id);
-    if (responseData.ok) {
-      const newPhoneCall = {
-        start: start,
-        end: end,
-        rate: 0.4,
-      };
-      console.log(newPhoneCall);
-      setPhonecalls(newPhoneCall);
-    } else {
-      window.alert("error");
-    }
+    const newPhoneCall = {
+      start: start,
+      end: end,
+      rate: 0.4,
+    };
+    const responseData = await insertPhonecall(id, newPhoneCall);
+    console.log(newPhoneCall);
+    setPhonecalls(responseData);
+    console.log(phonecalls);
   };
 
   const startPhonecalls = () => {

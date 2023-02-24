@@ -1,5 +1,3 @@
-import CallPhone from "./components/CallPhone";
-
 const searchSub = async (key) => {
   let url = "http://localhost:8080/subscribers";
   if (key !== null && key !== undefined && key !== "") {
@@ -52,7 +50,7 @@ const insertSub = async (subscribers) => {
   }
 };
 
-const insertPhonecall = async (id) => {
+const insertPhonecall = async (id, CallPhone) => {
   let url = "http://localhost:8080/phonecalls";
   if (id !== null && id !== undefined && id !== "") {
     url += "/" + id;
