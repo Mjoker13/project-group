@@ -50,8 +50,8 @@ const insertSub = async (subscribers) => {
   }
 };
 
- export const insertLayoutApi = async (valore) => {
-  let url = "http://localhost:8080/api1/layout/navbar";
+ export const insertLayoutApi = async (chiave,valore) => {
+  let url = "http://localhost:8080/api1/layout/"+chiave;
   try {
     const response = await fetch(url, {
       method: "PUT",

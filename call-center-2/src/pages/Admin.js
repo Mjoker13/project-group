@@ -5,7 +5,6 @@ import { BsFillArrowUpSquareFill } from "react-icons/bs";
 import { Button } from "react-bootstrap";
 import { insertLayoutApi } from "../Api";
 
-
 export const Admin = ({ layout, setLayout }) => {
   const [colors, setColors] = useState([]);
   const [selectedValue, setSelectedValue] = useState([]);
@@ -15,37 +14,35 @@ export const Admin = ({ layout, setLayout }) => {
     setColors(response);
     console.log(response);
   };
-  const saveLayout=async(event)=>{
-event.preventDefault()
-    console.log("llllllll", {selectedValue});
- const result = await insertLayoutApi( selectedValue.valore );
- console.log("sono il result",result)
-return result;
-  }
 
-  
+  const saveLayout = async () => {
+    console.log("Sono il Valore da memo...", { selectedValue });
+    const result = await insertLayoutApi(
+      selectedValue.chiave,
+      selectedValue
+    );
+    console.log("sono il result", result);
+    return result;
+  };
 
   useEffect(() => {
     getColors();
   }, []);
 
-  console.log("i colori che  vengono da DB:", { colors });
-
   const handleColor = (e, key) => {
-  const updateLayout=  layout.filter((el) => {
+    const updateLayout = layout.filter((el) => {
       if (el.chiave === key) {
         el.valore = e.target.value;
         setSelectedValue(el);
       }
     });
-    console.log("Sono il  layout modificato",updateLayout)
-    
-    setLayout(layout)
-    
+
+    setLayout(layout);
+
     return true;
   };
 
-   console.log("Sono il  select", {selectedValue});
+
 
   return (
     <div>
