@@ -5,8 +5,6 @@ import { useState, useEffect } from "react";
 import { getLayoutApi } from "./Api";
 
 const App = () => {
- 
- 
   const [layout, setLayout] = useState([
     {
       chiave: "navbar",
@@ -14,17 +12,8 @@ const App = () => {
     },
   ]);
 
-    const getLayout = async () => {
-      const result = await getLayoutApi();
-      console.log("sono result", result);
-      setLayout(result);
-    };
-
-   
- 
   useEffect(() => {
-  getLayout();
-  console.log(layout)
+    console.log("useEffect ", { layout });
   }, []);
 
   return (
