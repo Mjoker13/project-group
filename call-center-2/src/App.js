@@ -18,7 +18,6 @@ const App = () => {
       const result = await getLayoutApi();
       console.log("sono result", result);
       setLayout(result);
-     
     };
 
    
