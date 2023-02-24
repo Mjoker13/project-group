@@ -10,10 +10,9 @@ const App = () => {
     { key: "buttonDelite", value: "bg-primary" },
   ]);
 
-
-useEffect(()=>{
- console.log("useEffect ",{layout})
-},[])
+  useEffect(() => {
+    console.log("useEffect ", { layout });
+  }, []);
 
   return (
     <Routes>
