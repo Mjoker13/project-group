@@ -1,29 +1,18 @@
-
-import { useState } from "react";
-import { Button, Form, Row } from "react-bootstrap";
-import { Link, useParams, useNavigate } from "react-router-dom";
-import { postUser } from "./Api";
-
-/*{
-    "username": "scotttiger",
-	"password": "xyz",
-	"firstName": "Scott",
-	"lastName": "Tiger",
-	"dateOfBirth": "1988-05-13"
-} */
+import { useState, useEffect } from 'react';
+import { Button, Form, Row } from 'react-bootstrap';
+import { Link, useParams, useNavigate } from 'react-router-dom';
+import { postUser, getUserById, putUser } from '../api';
 
 const UserForm = ({ edit }) => {
   const { userId } = useParams();
-  console.log(userId);
-
   const navigate = useNavigate();
 
   const [inputState, setInputState] = useState({
-    username: "",
-    password: "",
-    firstName: "",
-    lastName: "",
-    dateOfBirth: "",
+    username: '',
+    password: '',
+    firstName: '',
+    lastName: '',
+    dateOfBirth: '',
   });
 
   const handleInputChange = (input, value) => {
@@ -32,19 +21,49 @@ const UserForm = ({ edit }) => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+    // TO DO validazione javascript
     console.log(inputState);
-    const result = await postUser(inputState);
+    let result = { ok: false, data: [] };
+    if (edit) {
+      // faccio la PUT
+      result = await putUser(inputState, userId);
+    } else {
+      // faccio la POST
+      result = await postUser(inputState);
+    }
     if (result.ok) {
       // faccio la redirect
-      navigate("/");
+      navigate('/');
     } else {
+      // TO DO gestione errori
       console.log(result.data);
     }
   };
 
+  useEffect(() => {
+    if (edit) {
+      const loadData = async () => {
+        const result = await getUserById(userId);
+        if (result.ok) {
+          // precarico gli input con i valori dell'utente
+          setInputState({
+            username: result.data.username,
+            password: result.data.password,
+            firstName: result.data.firstName,
+            lastName: result.data.lastName,
+            dateOfBirth: result.data.dateOfBirth,
+          });
+        } else {
+          console.log(result.data);
+        }
+      };
+      loadData();
+    }
+  }, [edit, userId]);
+
   return (
     <div>
-      <h1>{edit ? "Edit User" : "Create User"}</h1>
+      <h1>{edit ? 'Edit User' : 'Create User'}</h1>
       <Row>
         <Form className="col-12 col-sm-6 col-lg-4" onSubmit={handleFormSubmit}>
           <Form.Group controlId="username">

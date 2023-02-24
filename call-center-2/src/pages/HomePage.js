@@ -3,9 +3,11 @@ import { deleteSub, searchSub, insertSub } from "../Api";
 import { SubscriberList } from "../components/SubscriberList";
 import SearchBar from "../components/SearchBar";
 import React, { Fragment } from "react";
+import { Link } from "react-router-dom";
 
-const HomePage = () => {
+const HomePage = ({layout}) => {
   const [data, setData] = useState([]);
+  const [color, setColor] = useState([]);
 
   const updateData = async (key) => {
     const responseData = await searchSub(key);
@@ -24,6 +26,7 @@ const HomePage = () => {
   };
 
   useEffect(() => {
+    console.log("helloo",layout)
     updateData();
   }, []);
 
@@ -32,6 +35,14 @@ const HomePage = () => {
     setData(responseData);
     updateData();
   };
+  const getColorNavbar = () => {
+    const elNavbar = layout.filter((el) => {
+      return  el.key === "navbar"
+    });
+   
+    console.log(elNavbar[0].value);
+    return elNavbar[0].value;
+  };
   return (
     <Fragment>
       <div className="container text-center bg-body-tertiary">
@@ -39,9 +50,11 @@ const HomePage = () => {
         <SearchBar
           callWhenSubmit={handleSeachBarSubmit}
           insert={insertSubscriber}
+          layout={getColorNavbar()}
         />
         <SubscriberList data={data} onDelete={deleteSubscriber} />
       </div>
+      <Link to="admin">Admin</Link>
     </Fragment>
   );
 };
