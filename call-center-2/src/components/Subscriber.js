@@ -24,9 +24,7 @@ const Subscriber = ({ item, onDelete }) => {
 
   const getAllPhoneCalls = async () => {
     const data = await getallPhonecalls();
-    
-    (data);
-    console.log(phonecalls);
+    setPhonecalls(data);
   };
 
   const updatePhonecalls = async (id) => {
@@ -36,9 +34,7 @@ const Subscriber = ({ item, onDelete }) => {
       rate: 0.4,
     };
     const responseData = await insertPhonecall(id, newPhoneCall);
-    console.log(newPhoneCall);
     setPhonecalls(responseData);
-    console.log(phonecalls);
   };
 
   const savephonecalls = () => {

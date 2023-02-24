@@ -14,14 +14,13 @@ export const Admin = ({ layout, setLayout }) => {
     setColors(response);
     console.log(response);
   };
-  const saveLayout=async(event)=>{
+  const saveLayout = async (event) => {
     event.preventDefault();
-    console.log("llllllll", {selectedValue});
-    const result = await insertLayoutApi( selectedValue.chiave,selectedValue );
-    console.log("sono il result",result)
+    console.log("llllllll", { selectedValue });
+    const result = await insertLayoutApi(selectedValue.chiave, selectedValue);
+    console.log("sono il result", result);
     return result;
-  }
-
+  };
 
   useEffect(() => {
     getColors();
@@ -40,8 +39,6 @@ export const Admin = ({ layout, setLayout }) => {
     return true;
   };
 
-
-
   return (
     <div>
       <select
@@ -50,7 +47,7 @@ export const Admin = ({ layout, setLayout }) => {
           handleColor(e, "navbar");
         }}
       >
-        <option selected>Open this select menu</option>{" "}
+        <option selected>Select Color of Navbar</option>{" "}
         {colors.map((el) => {
           return (
             <option key={el.id} value={el.colorName}>

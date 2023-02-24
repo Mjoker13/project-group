@@ -12,9 +12,17 @@ const App = () => {
     },
   ]);
 
-  useEffect(() => {
-    console.log("useEffect ", { layout });
-  }, []);
+   const getLayout = async () => {
+     const result = await getLayoutApi();
+     console.log("sono result", result);
+     setLayout(result);
+   };
+
+   useEffect(() => {
+     getLayout();
+     console.log(layout);
+   }, []);
+
 
   return (
     <Routes>
