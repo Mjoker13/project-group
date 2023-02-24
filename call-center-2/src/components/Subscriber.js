@@ -1,17 +1,68 @@
 import Image from "./img/images.jpg";
+import { useEffect, useState } from "react";
 import { CallPhoneList } from "./CallPhoneList";
 import "./CssCustom/StyleCard.css";
 import { BsFillTelephonePlusFill, BsFillTelephoneXFill } from "react-icons/bs";
+import { insertPhonecall, getallPhonecalls } from "../Api";
+
+// {
+//   "start": "2022-02-01T00:40:30",
+//   "end": "2022-02-01T01:40:30",
+//   "rate": 0.2
+// }
 
 const Subscriber = ({ item, onDelete }) => {
+  const [phonecalls, setPhonecalls] = useState([]);
+  const [start, setStart] = useState("");
+  const [end, setEnd] = useState("");
+
   const handleDeleteSubscriber = () => {
     const answer = window.confirm("Confirm delete?");
     if (answer) onDelete(item.id);
   };
 
-  const startCallPhone = () => {
-    return <>const start= Date.now console.log(start);</>;
+  const getAllPhoneCalls = async () => {
+    const data = await getallPhonecalls();
+    setPhonecalls(data);
+    console.log(phonecalls);
   };
+
+  const updatePhonecalls = async (id) => {
+    const responseData = await insertPhonecall(id);
+    if (responseData.ok) {
+      const newPhoneCall = {
+        start: start,
+        end: end,
+        rate: 0.4,
+      };
+      console.log(newPhoneCall);
+      setPhonecalls(newPhoneCall);
+    } else {
+      window.alert("error");
+    }
+  };
+
+  const startPhonecalls = () => {
+    let startTemp = new Date();
+    setStart(startTemp.toISOString());
+    console.log(start);
+  };
+  const endPhonecalls = () => {
+    let endTemp = new Date();
+    setEnd(endTemp.toISOString());
+    console.log(end);
+  };
+
+  // const timerCallphone = (start, end) => {
+  //   const diffInMs = parseInt(Math.abs(new Date(start) - new Date(end)));
+  //   console.log(diffInMs);
+  //   const diffInSec = diffInMs / 1000;
+  //   console.log(diffInSec);
+  // };
+
+  useEffect(() => {
+    getAllPhoneCalls();
+  }, []);
 
   return (
     <div
@@ -39,17 +90,26 @@ const Subscriber = ({ item, onDelete }) => {
         <div className="mt-3 d-flex justify-content-around">
           <button
             className="btn btn-outline-success btn-sm"
-            onClick={startCallPhone}
+            onClick={startPhonecalls}
           >
             <BsFillTelephonePlusFill /> start
           </button>
           <button
             className="btn  btn-outline-danger btn-sm"
-            //onClick={endCallPhone}
+            onClick={endPhonecalls}
           >
             <BsFillTelephoneXFill /> end
           </button>
         </div>
+        <button
+          className="primary"
+          onClick={() => {
+            console.log(phonecalls);
+            updatePhonecalls(item.id);
+          }}
+        >
+          Add Phone Call
+        </button>
         <div className="mt-3">
           <button
             className=" bg-secondary text-white "
@@ -64,3 +124,18 @@ const Subscriber = ({ item, onDelete }) => {
   );
 };
 export { Subscriber };
+
+// const [currentDateTime, setCurrentDateTime] = useState("");
+
+//   const getCurrentDateTime = () => {
+//     const currentDate = new Date();
+//     setCurrentDateTime(currentDate.toLocaleString());
+//   };
+
+//   return (
+//     <div>
+//       <h1>Current Date and Time: {currentDateTime}</h1>
+//       <button onClick={getCurrentDateTime}>Get Current Date and Time</button>
+//     </div>
+//   );
+// }
